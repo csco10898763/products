@@ -1,12 +1,18 @@
-products = []
+import os # operating system
+
 # 讀取檔案
-with open('products.csv', 'r') as f:
-    for line in f:
-        if '商品,價格' in line:
-            continue # 跳到下一次迴圈的意思
-        name, price = line.strip().split(',') # strip() 去掉跳行符號 \n & 資料以 ',' 作為分割
-        products.append([name, price])
-print(products)
+products = []
+if os.path.isfile('products.csv'):  # 檢查檔案在不在
+    print('yeah !! 找到檔案了 !!\n')
+    with open('products.csv', 'r') as f: 
+        for line in f:
+            if '商品,價格' in line:
+                continue # 跳到下一次迴圈的意思
+            name, price = line.strip().split(',') # strip() 去掉跳行符號 \n & 資料以 ',' 作為分割
+            products.append([name, price])
+    print(products)
+else:
+    print('找不到檔案 !!\n')
 
 # 讓使用者輸入
 while True:
