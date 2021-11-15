@@ -2,6 +2,8 @@ products = []
 # 讀取檔案
 with open('products.csv', 'r') as f:
     for line in f:
+        if '商品,價格' in line:
+            continue # 跳到下一次迴圈的意思
         name, price = line.strip().split(',') # strip() 去掉跳行符號 \n & 資料以 ',' 作為分割
         products.append([name, price])
 print(products)
